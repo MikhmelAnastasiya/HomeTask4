@@ -18,4 +18,4 @@ class Model:
         p = root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
         print(len(p))
 
-        print(elem)
+        # print(elem)
