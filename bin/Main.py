@@ -1,7 +1,7 @@
-import bin.Model as model
+import bin.TextInformation as calc
 
 def main():
-    model.Model().fins_elements()
+    calc.TextInformation().count_words()
 
 
 if __name__ == "__main__":

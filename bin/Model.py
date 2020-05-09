@@ -9,13 +9,13 @@ class Model:
         self.name = ''
         self.count = 0
 
-    def fins_elements(self):
-        root = parser.XMLParser('').parse_book()
-
-        elem = root.find(".//*[@info-type='src-book-title']").text
-        self.name = elem
-
-        p = root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
-        print(len(p))
-
-        # print(elem)
+    # def find_elements(self):
+    #     root = parser.XMLParser('').parse_book()
+    #
+    #     elem = root.find(".//*[@info-type='src-book-title']").text
+    #     self.name = elem
+    #
+    #     p = root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
+    #     print(len(p))
+    #
+    #     print(elem)
