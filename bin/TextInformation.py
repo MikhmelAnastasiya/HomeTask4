@@ -5,8 +5,10 @@ import re
 
 class TextInformation:
 
-    def __init__(self):
-        self.root = parser.XMLParser('').parse_book()
+    def __init__(self, file):
+        parse = parser.XMLParser(file)
+        parse.find_path()
+        self.root = parse.parse_book()
 
     def book_title(self):
         title = self.root.find(".//*[@info-type='src-book-title']").text

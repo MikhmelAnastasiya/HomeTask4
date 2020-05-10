@@ -45,21 +45,15 @@ class DBConnector:
     def insert_book(self, model):
         sqlite_connection = ''
         try:
-            insert_string = [tuple(model.get_model())]
-            sqlite_insert_query = '''INSERT INTO ''' + self.BOOK_INFO_TABLE + '''
-                                          (book_name, 
-                                          number_of_paragraphs, 
-                                          number_of_words, 
-                                          number_of_letters, 
-                                          words_with_capital_letters, 
-                                          words_in_lowercase) 
+            insert_string = tuple(model.get_model())
+            sqlite_insert_query = '''INSERT OR REPLACE INTO ''' + self.BOOK_INFO_TABLE + '''                               
                                           VALUES (?, ?, ?, ?, ?, ?);'''
 
             sqlite_connection = sqlite3.connect(self.DB_NAME)
             logging.info("Database " + self.DB_NAME + " successfully connected to SQLite")
 
             cursor = sqlite_connection.cursor()
-            cursor.executemany(sqlite_insert_query, insert_string)
+            cursor.execute(sqlite_insert_query, insert_string)
             sqlite_connection.commit()
             logging.info("Record inserted successfully into " + self.BOOK_INFO_TABLE + " table")
 
