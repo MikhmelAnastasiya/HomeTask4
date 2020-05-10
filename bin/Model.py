@@ -1,21 +1,20 @@
-import bin.ParseXML as parser
+import bin.TextInformation as info
 import logging
-
-logging.basicConfig(level=logging.INFO)
 
 
 class Model:
     def __init__(self):
-        self.name = ''
-        self.count = 0
+        try:
+            self.book_name = info.TextInformation().book_title()
+            self.number_of_paragraphs = info.TextInformation().count_paragraphs()
+            self.number_of_words = info.TextInformation().count_words()
+            self.number_of_letters = info.TextInformation().count_letters()
+            self.words_with_capital_letters = info.TextInformation().count_words_with_capital_letters()
+            self.words_in_lowercase = info.TextInformation().count_words_in_lowercase()
+            logging.info('Object Model was initialized.')
 
-    # def find_elements(self):
-    #     root = parser.XMLParser('').parse_book()
-    #
-    #     elem = root.find(".//*[@info-type='src-book-title']").text
-    #     self.name = elem
-    #
-    #     p = root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
-    #     print(len(p))
-    #
-    #     print(elem)
+        except IOError as e:
+            logging.exception('Cannot initialize Object Model.')
+
+    def get_model(self):
+        return [self.book_name, self.number_of_paragraphs, self.number_of_words, self.number_of_letters, self.words_with_capital_letters, self.words_in_lowercase]

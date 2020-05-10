@@ -10,7 +10,7 @@ class TextInformation:
 
     def book_title(self):
         title = self.root.find(".//*[@info-type='src-book-title']").text
-        logging.info('Book  with title ' + title + ' was found')
+        logging.info('Book with title ' + title + ' was found')
 
         return title
 

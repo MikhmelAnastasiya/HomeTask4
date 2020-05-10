@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import logging
 
 logging.basicConfig(level=logging.INFO)
-# ET.register_namespace(prefix, uri)
+
 
 class XMLParser:
     def __init__(self, path):
@@ -19,7 +19,3 @@ class XMLParser:
 
         except IOError as e:
             logging.exception('Cannot find file: ' + self.path)
-
-
-
-
