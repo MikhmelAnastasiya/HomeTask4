@@ -65,3 +65,37 @@ class BookInformationSearcher:
         logging.info('Number of words in lowercase was counted: ' + str(count))
 
         return count
+
+    def frequency_of_word(self):
+        list_of_words = []
+
+        paragraphs = self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
+
+        full_string = ""
+
+        for paragraph in paragraphs:
+            string = ''.join(paragraph.itertext())
+            full_string = full_string + " " + string
+
+        full_string = re.sub(r'[^\w]', " ", full_string)
+
+        split_string_in_lowercase = full_string.lower().split()
+        unique_split_string_in_lowercase = set(split_string_in_lowercase)
+
+        string_with_uppercase = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b', full_string)
+        split_upper_string_in_lowercase = ' '.join(string_with_uppercase).lower().split()
+        unique_split_upper_string_in_lowercase = set(split_upper_string_in_lowercase)
+
+        for word in unique_split_string_in_lowercase:
+            count_word = 0
+            count_appercase = 0
+
+            count_word = split_string_in_lowercase.count(word)
+
+            for w in unique_split_upper_string_in_lowercase:
+                if w == word:
+                    count_appercase = split_upper_string_in_lowercase.count(w)
+
+            list_of_words.append((word, count_word, count_appercase))
+
+        return list_of_words
