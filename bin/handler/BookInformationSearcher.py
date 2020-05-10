@@ -1,14 +1,13 @@
-import bin.ParseXML as parser
 import logging
 import re
+from bin.parser.XMLParser import XMLParser
 
 
-class TextInformation:
+class BookInformationSearcher:
 
-    def __init__(self, file):
-        parse = parser.XMLParser(file)
-        parse.find_path()
-        self.root = parse.parse_book()
+    def __init__(self, path, file):
+        parser = XMLParser(path, file)
+        self.root = parser.parse_book()
 
     def book_title(self):
         title = self.root.find(".//*[@info-type='src-book-title']").text

@@ -31,12 +31,13 @@ class DBConnector:
             cursor.execute(sqlite_create_table_query)
             sqlite_connection.commit()
 
-            logging.info(self.BOOK_INFO_TABLE + " table was created")
+            logging.info("Connection to " + self.BOOK_INFO_TABLE)
 
             cursor.close()
 
         except sqlite3.Error as error:
-            logging.error("Cannot connect to SQLite or cannot create " + self.BOOK_INFO_TABLE + " table in SQLite.", error)
+            logging.error("Cannot connect to SQLite or cannot create " + self.BOOK_INFO_TABLE + " table in SQLite.",
+                          error)
         finally:
             if sqlite_connection:
                 sqlite_connection.close()
@@ -55,7 +56,7 @@ class DBConnector:
             cursor = sqlite_connection.cursor()
             cursor.execute(sqlite_insert_query, insert_string)
             sqlite_connection.commit()
-            logging.info("Record inserted successfully into " + self.BOOK_INFO_TABLE + " table")
+            logging.info("Record was inserted successfully into " + self.BOOK_INFO_TABLE + " table")
 
             cursor.close()
 
@@ -65,5 +66,3 @@ class DBConnector:
             if sqlite_connection:
                 sqlite_connection.close()
                 logging.info("The SQLite connection is closed")
-
-
