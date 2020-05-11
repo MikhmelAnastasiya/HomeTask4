@@ -18,7 +18,7 @@ class BookInformationSearcher:
     def count_paragraphs(self):
         count = 0
 
-        paragraphs = self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
+        paragraphs = self.root.findall('.//{*}p')
         count = len(paragraphs)
         logging.info('Number of paragraphs was counted: ' + str(count))
 
@@ -27,7 +27,7 @@ class BookInformationSearcher:
     def count_words(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+        for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
             words_in_paragraph = re.findall(r'\b[a-zA-Z]\w*|\b[а-яА-Я]\w*', full_string)
@@ -40,7 +40,7 @@ class BookInformationSearcher:
     def count_letters(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+        for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
             words_in_paragraph = re.findall(r'[a-zA-Z]|[а-яА-Я]', full_string)
@@ -53,7 +53,7 @@ class BookInformationSearcher:
     def count_words_with_capital_letters(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+        for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
             words_with_capital_letters = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b', full_string)
@@ -66,7 +66,7 @@ class BookInformationSearcher:
     def count_words_in_lowercase(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+        for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
             words_in_lowercase = re.findall(r'\b[a-z]\w*|\b[а-я]\w*', full_string)
@@ -81,7 +81,7 @@ class BookInformationSearcher:
 
         list_of_words = []
 
-        paragraphs = self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body')
+        paragraphs = self.root.findall('.//{*}body')
 
         full_string = ""
 
