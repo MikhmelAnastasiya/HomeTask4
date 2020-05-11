@@ -12,6 +12,7 @@ class Book:
             self.number_of_letters = info.count_letters()
             self.words_with_capital_letters = info.count_words_with_capital_letters()
             self.words_in_lowercase = info.count_words_in_lowercase()
+            self.count_frequency_of_words = info.frequency_of_word()
 
         except:
             logging.exception('Cannot initialize Object model.')
@@ -23,3 +24,6 @@ class Book:
                 self.number_of_letters,
                 self.words_with_capital_letters,
                 self.words_in_lowercase]
+
+    def get_frequency_of_words(self):
+        return [self.book_name, self.count_frequency_of_words]
