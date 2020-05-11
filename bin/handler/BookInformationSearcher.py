@@ -16,6 +16,8 @@ class BookInformationSearcher:
         return title
 
     def count_paragraphs(self):
+        count = 0
+
         paragraphs = self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
         count = len(paragraphs)
         logging.info('Number of paragraphs was counted: ' + str(count))
@@ -25,8 +27,10 @@ class BookInformationSearcher:
     def count_words(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p'):
-            words_in_paragraph = re.findall(r'\w+', ''.join(paragraph.itertext()))  # ??? регулярное выражение
+        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+            full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
+            full_string = re.sub(r'[0-9]+', " ", full_string)
+            words_in_paragraph = re.findall(r'\b[a-zA-Z]\w*|\b[а-яА-Я]\w*', full_string)
             count += len(words_in_paragraph)
 
         logging.info('Number of words was counted: ' + str(count))
@@ -36,8 +40,10 @@ class BookInformationSearcher:
     def count_letters(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p'):
-            words_in_paragraph = re.findall(r'[a-zA-Z]|[а-яА-Я]', ''.join(paragraph.itertext()))
+        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+            full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
+            full_string = re.sub(r'[0-9]+', " ", full_string)
+            words_in_paragraph = re.findall(r'[a-zA-Z]|[а-яА-Я]', full_string)
             count += len(words_in_paragraph)
 
         logging.info('Number of letters was counted: ' + str(count))
@@ -47,8 +53,10 @@ class BookInformationSearcher:
     def count_words_with_capital_letters(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p'):
-            words_with_capital_letters = re.findall(r'\b[A-Z]\w+\b|\b[А-Я]\w+\b', ''.join(paragraph.itertext()))
+        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+            full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
+            full_string = re.sub(r'[0-9]+', " ", full_string)
+            words_with_capital_letters = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b', full_string)
             count += len(words_with_capital_letters)
 
         logging.info('Number of words with capital letters was counted: ' + str(count))
@@ -58,8 +66,10 @@ class BookInformationSearcher:
     def count_words_in_lowercase(self):
         count = 0
 
-        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p'):
-            words_in_lowercase = re.findall(r'\b[a-z]+\b|\b[а-я]+\b', ''.join(paragraph.itertext()))
+        for paragraph in self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body'):
+            full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
+            full_string = re.sub(r'[0-9]+', " ", full_string)
+            words_in_lowercase = re.findall(r'\b[a-z]\w*|\b[а-я]\w*', full_string)
             count += len(words_in_lowercase)
 
         logging.info('Number of words in lowercase was counted: ' + str(count))
@@ -67,9 +77,11 @@ class BookInformationSearcher:
         return count
 
     def frequency_of_word(self):
+        logging.info("Count frequency of word in progress...")
+
         list_of_words = []
 
-        paragraphs = self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}p')
+        paragraphs = self.root.findall('.//{http://www.gribuser.ru/xml/fictionbook/2.0}body')
 
         full_string = ""
 
@@ -77,7 +89,8 @@ class BookInformationSearcher:
             string = ''.join(paragraph.itertext())
             full_string = full_string + " " + string
 
-        full_string = re.sub(r'[^\w]', " ", full_string)
+        full_string = re.sub(r'\W+', " ", full_string)
+        full_string = re.sub(r'[0-9]+', " ", full_string)
 
         split_string_in_lowercase = full_string.lower().split()
         unique_split_string_in_lowercase = set(split_string_in_lowercase)
@@ -97,5 +110,7 @@ class BookInformationSearcher:
                     count_appercase = split_upper_string_in_lowercase.count(w)
 
             list_of_words.append((word, count_word, count_appercase))
+
+        logging.info("Count frequency of word finished")
 
         return list_of_words
