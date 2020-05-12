@@ -27,18 +27,18 @@ class DBConnector:
                                                     words_in_lowercase INT);'''
 
             sqlite_connection = sqlite3.connect(self.DB_NAME)
-            logging.info("Database " + self.DB_NAME + " successfully connected to SQLite")
+            logging.info("Database {} successfully connected to SQLite".format(self.DB_NAME))
 
             cursor = sqlite_connection.cursor()
             cursor.execute(sqlite_create_table_query)
             sqlite_connection.commit()
 
-            logging.info("Connection to " + self.BOOK_INFO_TABLE)
+            logging.info("Connection to {}".format(self.BOOK_INFO_TABLE))
 
             cursor.close()
 
         except sqlite3.Error as error:
-            logging.error("Cannot connect to SQLite or cannot create " + self.BOOK_INFO_TABLE + " table in SQLite.",
+            logging.error("Cannot connect to SQLite or cannot create {} table in SQLite.".format(self.BOOK_INFO_TABLE),
                           error)
         finally:
             if sqlite_connection:
@@ -53,12 +53,12 @@ class DBConnector:
                                           VALUES (?, ?, ?, ?, ?, ?);'''
 
             sqlite_connection = sqlite3.connect(self.DB_NAME)
-            logging.info("Database " + self.DB_NAME + " successfully connected to SQLite")
+            logging.info("Database {} successfully connected to SQLite".format(self.DB_NAME))
 
             cursor = sqlite_connection.cursor()
             cursor.execute(sqlite_insert_query, insert_string)
             sqlite_connection.commit()
-            logging.info("Total " + str(cursor.rowcount) + " records inserted successfully into " + self.BOOK_INFO_TABLE + " table")
+            logging.info("Total {} records inserted successfully into {} table".format(str(cursor.rowcount), self.BOOK_INFO_TABLE))
 
             cursor.close()
 
@@ -82,7 +82,7 @@ class DBConnector:
                                                                 count_uppercase INT);'''
 
             sqlite_connection = sqlite3.connect(self.DB_NAME)
-            logging.info("Database " + table_name + " successfully connected to SQLite")
+            logging.info("Database {} successfully connected to SQLite".format(table_name))
             cursor = sqlite_connection.cursor()
             cursor.execute(sqlite_create_table_query)
             sqlite_connection.commit()
@@ -98,7 +98,7 @@ class DBConnector:
 
             cursor.executemany(sqlite_insert_query, insert_strings)
             sqlite_connection.commit()
-            logging.info("Total " + str(cursor.rowcount) + " records inserted successfully into " + table_name + " table")
+            logging.info("Total " + str(cursor.rowcount) + " records inserted successfully into {} table".format(table_name))
             sqlite_connection.commit()
             cursor.close()
 

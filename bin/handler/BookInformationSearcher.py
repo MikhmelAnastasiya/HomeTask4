@@ -11,7 +11,7 @@ class BookInformationSearcher:
 
     def book_title(self):
         title = self.root.find(".//*[@info-type='src-book-title']").text
-        logging.info('Book with title ' + title + ' was found')
+        logging.info('Book with title {} was found'.format(title))
 
         return title
 
@@ -20,7 +20,7 @@ class BookInformationSearcher:
 
         paragraphs = self.root.findall('.//{*}p')
         count = len(paragraphs)
-        logging.info('Number of paragraphs was counted: ' + str(count))
+        logging.info('Number of paragraphs was counted: {}'.format(str(count)))
 
         return count
 
@@ -33,7 +33,7 @@ class BookInformationSearcher:
             words_in_paragraph = re.findall(r'\b[a-zA-Z]\w*|\b[а-яА-Я]\w*', full_string)
             count += len(words_in_paragraph)
 
-        logging.info('Number of words was counted: ' + str(count))
+        logging.info('Number of words was counted: {}'.format(str(count)))
 
         return count
 
@@ -46,7 +46,7 @@ class BookInformationSearcher:
             words_in_paragraph = re.findall(r'[a-zA-Z]|[а-яА-Я]', full_string)
             count += len(words_in_paragraph)
 
-        logging.info('Number of letters was counted: ' + str(count))
+        logging.info('Number of letters was counted: {}'.format(str(count)))
 
         return count
 
@@ -59,7 +59,7 @@ class BookInformationSearcher:
             words_with_capital_letters = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b', full_string)
             count += len(words_with_capital_letters)
 
-        logging.info('Number of words with capital letters was counted: ' + str(count))
+        logging.info('Number of words with capital letters was counted: {}'.format(str(count)))
 
         return count
 
@@ -72,7 +72,7 @@ class BookInformationSearcher:
             words_in_lowercase = re.findall(r'\b[a-z]\w*|\b[а-я]\w*', full_string)
             count += len(words_in_lowercase)
 
-        logging.info('Number of words in lowercase was counted: ' + str(count))
+        logging.info('Number of words in lowercase was counted: {}'.format(str(count)))
 
         return count
 
@@ -101,15 +101,15 @@ class BookInformationSearcher:
 
         for word in unique_split_string_in_lowercase:
             count_word = 0
-            count_appercase = 0
+            count_uppercase = 0
 
             count_word = split_string_in_lowercase.count(word)
 
             for w in unique_split_upper_string_in_lowercase:
                 if w == word:
-                    count_appercase = split_upper_string_in_lowercase.count(w)
+                    count_uppercase = split_upper_string_in_lowercase.count(w)
 
-            list_of_words.append((word, count_word, count_appercase))
+            list_of_words.append((word, count_word, count_uppercase))
 
         logging.info("Count frequency of word finished")
 
