@@ -1,4 +1,4 @@
-from bin.handler.BookInformationSearcher import BookInformationSearcher
+from src.handler.BookInformationSearcher import BookInformationSearcher
 import logging
 
 

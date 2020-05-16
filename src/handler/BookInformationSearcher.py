@@ -1,6 +1,6 @@
 import logging
 import re
-from bin.parser.XMLParser import XMLParser
+from src.parser.XMLParser import XMLParser
 
 
 class BookInformationSearcher:

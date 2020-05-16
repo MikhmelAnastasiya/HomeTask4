@@ -3,9 +3,9 @@ import os
 
 sys.path.insert(0, os.path.abspath('..'))
 from sys import argv
-from bin.parser.Folder import Folder
-from bin.model.DBConnector import DBConnector
-from bin.model.Book import Book
+from src.parser.Folder import Folder
+from src.model.DBConnector import DBConnector
+from src.model.Book import Book
 import logging
 
 
