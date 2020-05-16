@@ -2,24 +2,20 @@ import logging
 import os
 import shutil
 
-logging.basicConfig(level=logging.INFO)
-
 
 class Folder:
-    def __init__(self):
-        self.path_to_input_folder = ""
-        self.path_to_incorrect_input_folder = ""
+    def __init__(self, path):
+        self.path_to_folder = path
+        self.path_to_input_folder = os.path.join(path, 'input')
+        self.path_to_incorrect_input_folder = os.path.join(path, 'incorrect_input')
 
     def create_folders(self):
-        home = os.path.expanduser('~')
-        self.path_to_input_folder = os.path.join(home, 'Documents', 'books', 'input')
-        self.path_to_incorrect_input_folder = os.path.join(home, 'Documents', 'books', 'incorrect_input')
-
         try:
-            if not os.path.isdir(os.path.join(home, 'Documents', 'books')):
-                os.mkdir(os.path.join(home, 'Documents', 'books'))
+            if not os.path.isdir(self.path_to_folder):
+                os.mkdir(self.path_to_folder)
             if not os.path.isdir(self.path_to_input_folder):
-                os.mkdir(os.path.join(home, 'Documents', 'books', 'input'))
+                os.mkdir(self.path_to_input_folder)
+                logging.info("Cannot find input folder")
                 logging.info("Input folder was created by path {}".format(self.path_to_input_folder))
             if not os.path.isdir(self.path_to_incorrect_input_folder):
                 os.mkdir(self.path_to_incorrect_input_folder)
