@@ -30,7 +30,7 @@ class BookInformationSearcher:
         for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
-            words_in_paragraph = re.findall(r'\b[a-zA-Z]\w*|\b[а-яА-Я]\w*', full_string)
+            words_in_paragraph = full_string.split()
             count += len(words_in_paragraph)
 
         logging.info('Number of words was counted: {}'.format(str(count)))
@@ -43,7 +43,7 @@ class BookInformationSearcher:
         for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
-            words_in_paragraph = re.findall(r'[a-zA-Z]|[а-яА-Я]', full_string)
+            words_in_paragraph = re.findall(r'[a-zA-ZäöüÄÖÜß]|[а-яА-Я]', full_string)
             count += len(words_in_paragraph)
 
         logging.info('Number of letters was counted: {}'.format(str(count)))
@@ -56,7 +56,7 @@ class BookInformationSearcher:
         for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
-            words_with_capital_letters = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b', full_string)
+            words_with_capital_letters = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b|\b[ÄÖÜß]\w*\b', full_string)
             count += len(words_with_capital_letters)
 
         logging.info('Number of words with capital letters was counted: {}'.format(str(count)))
@@ -69,7 +69,7 @@ class BookInformationSearcher:
         for paragraph in self.root.findall('.//{*}body'):
             full_string = re.sub(r'\W+', " ", ''.join(paragraph.itertext()))
             full_string = re.sub(r'[0-9]+', " ", full_string)
-            words_in_lowercase = re.findall(r'\b[a-z]\w*|\b[а-я]\w*', full_string)
+            words_in_lowercase = re.findall(r'\b[a-z]\w*|\b[а-я]\w*|\b[äöü]\w*', full_string)
             count += len(words_in_lowercase)
 
         logging.info('Number of words in lowercase was counted: {}'.format(str(count)))
@@ -95,7 +95,7 @@ class BookInformationSearcher:
         split_string_in_lowercase = full_string.lower().split()
         unique_split_string_in_lowercase = set(split_string_in_lowercase)
 
-        string_with_uppercase = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b', full_string)
+        string_with_uppercase = re.findall(r'\b[A-Z]\w*\b|\b[А-Я]\w*\b|\b[ÄÖÜß]\w*\b', full_string)
         split_upper_string_in_lowercase = ' '.join(string_with_uppercase).lower().split()
         unique_split_upper_string_in_lowercase = set(split_upper_string_in_lowercase)
 
