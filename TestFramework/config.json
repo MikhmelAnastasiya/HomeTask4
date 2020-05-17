@@ -1,5 +1,5 @@
 {
-  "heals_check": {
+  "health_check": {
     "database": "C:\\Users\\Anastasiya_Mikhmel\\Documents\\DQE Training\\Module 4\\Task\\HomeTaskModule4Mikhmel\\src\\Book.db",
     "test_data_folder": "C:\\Users\\Anastasiya_Mikhmel\\Documents\\DQE Training\\Module 4\\Task\\HomeTaskModule4Mikhmel\\TestFramework\\test_data\\health_check"
   },

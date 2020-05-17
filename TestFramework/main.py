@@ -10,13 +10,15 @@ from TestFramework.test_processor import TestProcessor
 
 
 def run():
-    config = Configurator(argv[1])
+    test_type = argv[1]
+
+    config = Configurator(test_type)
 
     database_url = config.get_database_url()
 
     connector = Connector(database_url)
 
-    logger = Result()
+    logger = Result(test_type)
 
     test_processor = TestProcessor(config, connector, logger)
     test_processor.process()
