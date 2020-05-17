@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<sample t="3" it="0" lt="2" ct="2" ts="1589734373696" s="true" lb="Check table &apos;book_info&apos; for date existing" rc="200" rm="OK" tn="Tests 1-1" dt="text" de="UTF-8" by="60" sby="0" sc="1" ec="0" ng="1" na="1" hn="EPBYMINW06CC">
+  <assertionResult>
+    <name>Response Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseHeader class="java.lang.String">shared:false, driver:org.sqlite.JDBC, url:jdbc:sqlite:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/src/Book.db, user:null</responseHeader>
+  <requestHeader class="java.lang.String"></requestHeader>
+  <responseData class="java.lang.String">CASE WHEN COUNT(*) &gt; 0 
+THEN &quot;TRUE&quot; 
+ELSE &quot;FALSE&quot; 
+END
+TRUE
+</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <samplerData class="java.lang.String">[Select Statement] SELECT CASE WHEN COUNT(*) &gt; 0 
+THEN &quot;TRUE&quot; 
+ELSE &quot;FALSE&quot; 
+END 
+FROM book_info
+
+</samplerData>
+</sample>
+<sample t="1" it="0" lt="1" ct="0" ts="1589734373699" s="true" lb="Check table &apos;flowers_for_algernon&apos; for date existing" rc="200" rm="OK" tn="Tests 1-1" dt="text" de="UTF-8" by="60" sby="0" sc="1" ec="0" ng="1" na="1" hn="EPBYMINW06CC">
+  <assertionResult>
+    <name>Response Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseHeader class="java.lang.String">shared:false, driver:org.sqlite.JDBC, url:jdbc:sqlite:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/src/Book.db, user:null</responseHeader>
+  <requestHeader class="java.lang.String"></requestHeader>
+  <responseData class="java.lang.String">CASE WHEN COUNT(*) &gt; 0 
+THEN &quot;TRUE&quot; 
+ELSE &quot;FALSE&quot; 
+END
+TRUE
+</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <samplerData class="java.lang.String">[Select Statement] SELECT CASE WHEN COUNT(*) &gt; 0 
+THEN &quot;TRUE&quot; 
+ELSE &quot;FALSE&quot; 
+END 
+FROM flowers_for_algernon
+
+</samplerData>
+</sample>
+<sample t="0" it="0" lt="0" ct="0" ts="1589734373700" s="true" lb="Check sum words with capital letters and words in lowercase is equal to number of words in text" rc="200" rm="OK" tn="Tests 1-1" dt="text" de="UTF-8" by="113" sby="0" sc="1" ec="0" ng="1" na="1" hn="EPBYMINW06CC">
+  <assertionResult>
+    <name>Response Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseHeader class="java.lang.String">shared:false, driver:org.sqlite.JDBC, url:jdbc:sqlite:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/src/Book.db, user:null</responseHeader>
+  <requestHeader class="java.lang.String"></requestHeader>
+  <responseData class="java.lang.String">CASE WHEN words_with_capital_letters + words_in_lowercase == number_of_words
+THEN &quot;TRUE&quot; 
+ELSE &quot;FALSE&quot; 
+END
+TRUE
+</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <samplerData class="java.lang.String">[Select Statement] SELECT CASE WHEN words_with_capital_letters + words_in_lowercase == number_of_words
+THEN &quot;TRUE&quot; 
+ELSE &quot;FALSE&quot; 
+END 
+FROM book_info
+WHERE book_name = &quot;Flowers for Algernon&quot;
+
+</samplerData>
+</sample>
+<sample t="1" it="0" lt="1" ct="0" ts="1589734373701" s="true" lb="Check count of all words in Flowers for Algernon book between &apos;book_info&apos; and &apos;flowers_for_algernon&apos; tables" rc="200" rm="OK" tn="Tests 1-1" dt="text" de="UTF-8" by="180" sby="0" sc="1" ec="0" ng="1" na="1" hn="EPBYMINW06CC">
+  <assertionResult>
+    <name>Response Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseHeader class="java.lang.String">shared:false, driver:org.sqlite.JDBC, url:jdbc:sqlite:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/src/Book.db, user:null</responseHeader>
+  <requestHeader class="java.lang.String"></requestHeader>
+  <responseData class="java.lang.String">CASE 
+	WHEN
+	(SELECT number_of_words FROM book_info
+	WHERE book_name = &quot;Flowers for Algernon&quot;) == (SELECT SUM(count) FROM flowers_for_algernon)
+	THEN &quot;TRUE&quot;
+	ELSE &quot;FALSE&quot;
+END
+TRUE
+</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <samplerData class="java.lang.String">[Select Statement] SELECT CASE 
+	WHEN
+	(SELECT number_of_words FROM book_info
+	WHERE book_name = &quot;Flowers for Algernon&quot;) == (SELECT SUM(count) FROM flowers_for_algernon)
+	THEN &quot;TRUE&quot;
+	ELSE &quot;FALSE&quot;
+END
+
+
+</samplerData>
+</sample>
+<sample t="1" it="0" lt="1" ct="0" ts="1589734373703" s="true" lb="Check count of all words with capital letter in Flowers for Algernon book between &apos;book_info&apos; and &apos;flowers_for_algernon&apos; tables" rc="200" rm="OK" tn="Tests 1-1" dt="text" de="UTF-8" by="201" sby="0" sc="1" ec="0" ng="1" na="1" hn="EPBYMINW06CC">
+  <assertionResult>
+    <name>Response Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+  <responseHeader class="java.lang.String">shared:false, driver:org.sqlite.JDBC, url:jdbc:sqlite:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/src/Book.db, user:null</responseHeader>
+  <requestHeader class="java.lang.String"></requestHeader>
+  <responseData class="java.lang.String">CASE 
+	WHEN
+	(SELECT words_with_capital_letters FROM book_info
+	WHERE book_name = &quot;Flowers for Algernon&quot;) == (SELECT SUM(count_uppercase) FROM flowers_for_algernon)
+	THEN &quot;TRUE&quot;
+	ELSE &quot;FALSE&quot;
+END
+TRUE
+</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <samplerData class="java.lang.String">[Select Statement] SELECT CASE 
+	WHEN
+	(SELECT words_with_capital_letters FROM book_info
+	WHERE book_name = &quot;Flowers for Algernon&quot;) == (SELECT SUM(count_uppercase) FROM flowers_for_algernon)
+	THEN &quot;TRUE&quot;
+	ELSE &quot;FALSE&quot;
+END
+
+
+</samplerData>
+</sample>
+
+</testResults>
