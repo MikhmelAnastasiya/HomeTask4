@@ -1,0 +1,12 @@
+
+
+health_check test was started
+
+
+Test case 'Check table 'book_info' for date existing'
+PASS. Result is 'TRUE' as expected
+	Query: SELECT CASE WHEN COUNT(*) > 0 THEN 'TRUE' ELSE 'FALSE' END FROM book_info
+
+Test case 'Check table 'flowers_for_algernon' for date existing'
+PASS. Result is 'TRUE' as expected
+	Query: SELECT CASE WHEN COUNT(*) > 0 THEN 'TRUE' ELSE 'FALSE' END FROM flowers_for_algernon
