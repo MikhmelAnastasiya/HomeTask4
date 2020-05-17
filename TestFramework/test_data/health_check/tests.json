@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Check table 'book_info' for date existing",
+      "query": "SELECT CASE WHEN COUNT(*) > 0 THEN 'TRUE' ELSE 'FALSE' END FROM book_info",
+      "expected": "TRUE"
+    },
+    {
+      "name": "Check table 'flowers_for_algernon' for date existing",
+      "query": "SELECT CASE WHEN COUNT(*) > 0 THEN 'TRUE' ELSE 'FALSE' END FROM flowers_for_algernon",
+      "expected": "TRUE"
+    }
+  ]
+}
