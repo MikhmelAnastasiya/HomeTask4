@@ -8,7 +8,8 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'python main.py "smoke"'
+        sh 'cd "C:\Users\Anastasiya_Mikhmel\Documents\DQE Training\Module 4\Task\HomeTaskModule4Mikhmel\TestFramework"
+python main.py smoke'
       }
     }
   }

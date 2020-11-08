@@ -25,6 +25,8 @@ def run():
 
     logger.finish_test()
 
+    print("OOOKKKKK")
+
 
 if __name__ == '__main__':
     run()
