@@ -105,7 +105,7 @@ FROM flowers_for_algernon</stringProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Check sum words with capital letters and words in lowercase is equal to number of words in text" enabled="true">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Check sum words with capital letters and words in lowercase is equal to number of words in text in &apos;book_info&apos; table" enabled="true">
           <stringProp name="dataSource">connection</stringProp>
           <stringProp name="queryType">Select Statement</stringProp>
           <stringProp name="query">SELECT CASE WHEN words_with_capital_letters + words_in_lowercase == number_of_words

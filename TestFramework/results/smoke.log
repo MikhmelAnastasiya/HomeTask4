@@ -4,13 +4,13 @@ smoke test was started
 
 
 Test case 'Check sum words with capital letters and words in lowercase is equal to number of words in text in 'book_info' table'
-PASS. Result is 'TRUE' as expected
+PASSed. Result is 'TRUE' as expected
 	Query: SELECT CASE WHEN words_with_capital_letters + words_in_lowercase == number_of_words THEN 'TRUE' ELSE 'FALSE' END FROM book_info WHERE book_name = 'Flowers for Algernon'
 
 Test case 'Check count of all words in Flowers for Algernon book between 'book_info' and 'flowers_for_algernon' tables'
-PASS. Result is 'TRUE' as expected
+PASSed. Result is 'TRUE' as expected
 	Query: SELECT CASE WHEN (SELECT number_of_words FROM book_info WHERE book_name = 'Flowers for Algernon') == (SELECT SUM(count) FROM flowers_for_algernon) THEN 'TRUE' ELSE 'FALSE' END
 
 Test case 'Check count of all words with capital letter in Flowers for Algernon book between 'book_info' and 'flowers_for_algernon' tables'
-PASS. Result is 'TRUE' as expected
+PASSed. Result is 'TRUE' as expected
 	Query: SELECT CASE WHEN (SELECT words_with_capital_letters FROM book_info WHERE book_name = 'Flowers for Algernon') == (SELECT SUM(count_uppercase) FROM flowers_for_algernon) THEN 'TRUE' ELSE 'FALSE' END

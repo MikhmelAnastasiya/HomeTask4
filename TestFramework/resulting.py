@@ -15,7 +15,7 @@ class Result:
         self.result_file.write("\n\nTest case '{}'".format(test_name))
 
     def add_pass(self, query, actual_result):
-        self.result_file.write("\nPASS. Result is '{0}' as expected"
+        self.result_file.write("\nPASSed. Result is '{0}' as expected"
                                "\n\tQuery: {1}".format(actual_result, query))
 
     def add_fail(self, query, actual_result, expected_result):
