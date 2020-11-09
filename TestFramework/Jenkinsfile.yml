@@ -1,9 +1,16 @@
 pipeline {
   agent { docker { image 'python:3.8.2' } }
   stages {
-    stage('test') {
+  stage('build') {
+    
       steps {
-        sh 'python %WORKSPACE%/TestFramework/main.py smoke'
+        sh 'cd TestFramework'
+      }
+    }
+    stage('test') {
+    
+      steps {
+        sh 'python main.py smoke'
       }
     }
   }
