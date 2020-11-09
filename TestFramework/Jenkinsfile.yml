@@ -4,7 +4,7 @@ pipeline {
     stage('test') {
     
       steps {
-        sh 'python .\TestFramework\main.py smoke'
+        sh 'python ./TestFramework/main.py smoke'
       }
     }
   }
