@@ -10,7 +10,7 @@ pipeline {
   stage('build') {
     
       steps {
-        sh 'cd C:\Users\Anastasiya_Mikhmel\Documents\DQE Training\Module 4\Task\HomeTaskModule4Mikhmel\TestFramework'
+        sh 'cd C:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/TestFramework'
       }
     }
     stage('test') {
