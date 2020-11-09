@@ -7,7 +7,7 @@ pipeline {
         sh 'git clone https://github.com/MikhmelAnastasiya/HomeTask4'
       }
     }
-  stage('build') {
+  stage('builkk') {
     
       steps {
         sh 'cd C:/Users/Anastasiya_Mikhmel/Documents/DQE Training/Module 4/Task/HomeTaskModule4Mikhmel/TestFramework'
