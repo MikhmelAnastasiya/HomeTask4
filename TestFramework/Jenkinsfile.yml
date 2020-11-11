@@ -1,6 +1,12 @@
 pipeline {
   agent { docker { image 'python:3.8.2' } }
   stages {
+    stage('test1') {
+
+    steps {
+    sh 'export PYTHONPATH=$PATH_TO_MODULE:$PYTHONPATH'
+    }
+    }
     stage('test') {
 
       steps {
