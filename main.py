@@ -2,6 +2,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.abspath('..'))
+
 from sys import argv
 from TestFramework.configurator import Configurator
 from TestFramework.connector import Connector

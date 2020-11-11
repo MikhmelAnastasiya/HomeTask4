@@ -1,9 +1,9 @@
 class Result:
     def __init__(self, test_type):
         if test_type == "health_check":
-            self.result_file = open('results/health_check.log', 'w')
+            self.result_file = open('TestFramework/results/health_check.log', 'w')
         elif test_type == "smoke":
-            self.result_file = open('results/smoke.log', 'w')
+            self.result_file = open('TestFramework/results/smoke.log', 'w')
 
     def start_test(self, test_type):
         self.result_file.write('\n\n{} test was started\n'.format(test_type))
