@@ -1,6 +1,6 @@
 class Configurator:
     def __init__(self, test_type):
-        with open('TestFramework/config.json') as file:
+        with open('config.json') as file:
             self.config = eval(file.read())
         self.config = self.config[test_type]
         self.type = test_type
